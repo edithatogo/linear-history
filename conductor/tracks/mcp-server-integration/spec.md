@@ -1,7 +1,7 @@
 # MCP Server Integration - Specification
 
 ## Overview
-The MCP Server Integration track focuses on connecting the Linear History tool with Linear's official MCP server. This track implements the communication layer that allows the tool to send repository history data to Linear via the MCP protocol.
+The MCP Integration track focuses on connecting the Linear History skill with Linear's official MCP server. This track implements the communication layer that allows the skill to send repository history data to Linear via the MCP protocol.
 
 ## Goals
 - Implement communication with Linear's MCP server

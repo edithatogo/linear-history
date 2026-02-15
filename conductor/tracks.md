@@ -12,16 +12,16 @@ This file tracks all major work items. Each track has its own spec and plan.
 
 ## Completed Tracks
 
-### 2. [x] MCP Server Integration
+### 2. [x] MCP Integration
 - **Status**: Completed
 - **Priority**: High
-- **Description**: Implement communication with Linear's MCP server for data transmission
+- **Description**: Implement communication with Linear's official MCP server for data transmission
 - **Link**: [conductor/tracks/mcp-server-integration/spec.md](tracks/mcp-server-integration/spec.md)
 
-## Next Steps
+## Completed Tracks
 
 ### 3. Linear Integration Enhancement
-- **Status**: Planned
+- **Status**: Completed
 - **Priority**: High
 - **Description**: Enhance integration with Linear API for advanced features
 - **Link**: [conductor/tracks/linear-enhancement/spec.md](tracks/linear-enhancement/spec.md)

@@ -1,17 +1,24 @@
 import { ConfigManager } from './config';
 import { GitAnalyzer } from './git-analyzer';
 import { DataTransformer } from './data-transformer';
+import { DataMapper } from './data-mapper';
+import { MCPClient } from './mcp-client';
+import { MCPApiService } from './mcp-api-service';
 import { LinearIssue } from './data-transformer';
 
 export class LinearHistoryApp {
   private configManager: ConfigManager;
   private gitAnalyzer: GitAnalyzer;
   private dataTransformer: DataTransformer;
+  private dataMapper: DataMapper;
+  private mcpClient?: MCPClient;
+  private mcpApiService?: MCPApiService;
 
   constructor() {
     this.configManager = new ConfigManager();
     this.gitAnalyzer = new GitAnalyzer();
     this.dataTransformer = new DataTransformer();
+    this.dataMapper = new DataMapper();
   }
 
   /**
@@ -20,10 +27,14 @@ export class LinearHistoryApp {
    */
   public async run(configPath?: string): Promise<void> {
     console.log('Starting Linear History Tool...');
-    
+
     // Load configuration
     const config = await this.configManager.load(configPath);
     console.log(`Configuration loaded for repo: ${config.repoPath}`);
+
+    // Initialize MCP components
+    this.mcpClient = new MCPClient(config);
+    this.mcpApiService = new MCPApiService(config, this.mcpClient);
 
     // Analyze the repository
     console.log('Analyzing repository...');
@@ -34,6 +45,30 @@ export class LinearHistoryApp {
     console.log('Transforming data to Linear format...');
     const linearIssues = this.dataTransformer.transformToLinearFormat(gitResult);
     console.log(`Transformed ${linearIssues.length} items to Linear format`);
+
+    // Map to MCP format
+    console.log('Mapping data to MCP format...');
+    const mcpIssues = this.dataMapper.toMCPFormat(linearIssues, config.repoPath);
+    console.log(`Mapped ${mcpIssues.length} items to MCP format`);
+
+    // Create batch payload
+    const payload = this.dataMapper.createBatchPayload(mcpIssues, config.repoPath);
+
+    // Validate the payload
+    if (!this.dataMapper.validateBatchPayload(payload)) {
+      console.error('Invalid payload format');
+      return;
+    }
+
+    // Submit to MCP server
+    console.log('Submitting data to MCP server...');
+    const submissionResult = await this.mcpApiService.submitWithRetry(payload);
+
+    if (submissionResult.success) {
+      console.log(`Successfully submitted ${payload.issues.length} items to Linear via MCP`);
+    } else {
+      console.error(`Failed to submit data to MCP server: ${submissionResult.error}`);
+    }
 
     // Create traceability mapping
     console.log('Creating traceability mapping...');

@@ -1,7 +1,7 @@
 # Linear History Tool - Product Specification
 
 ## Vision
-A tool that maps local repository history to Linear via Linear's official MCP server, enabling seamless migration of Git commit history and project management data to Linear issues and projects.
+A skill that maps local repository history to Linear via Linear's official MCP server, enabling seamless migration of Git commit history and project management data to Linear issues and projects.
 
 ## Users
 - Developers wanting to migrate project history to Linear

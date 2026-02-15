@@ -1,6 +1,7 @@
 import { DataMapper } from '../src/data-mapper';
 
 describe('DataMapper', () => {
+  const dataMapper = new DataMapper();
   const mockLinearIssue = {
     id: 'test-id',
     title: 'Test Issue',
@@ -16,8 +17,8 @@ describe('DataMapper', () => {
 
   describe('issueToMCPFormat', () => {
     it('should convert LinearIssue to MCP format correctly', () => {
-      const result = DataMapper.issueToMCPFormat(mockLinearIssue, '/test/repo');
-      
+      const result = dataMapper.issueToMCPFormat(mockLinearIssue, '/test/repo');
+
       expect(result).toEqual({
         id: 'test-id',
         title: 'Test Issue',
@@ -50,7 +51,7 @@ describe('DataMapper', () => {
         }
       };
 
-      const result = DataMapper.validateMCPIssue(validIssue);
+      const result = dataMapper.validateMCPIssue(validIssue);
       expect(result).toBe(true);
     });
 
@@ -67,15 +68,15 @@ describe('DataMapper', () => {
         }
       };
 
-      const result = DataMapper.validateMCPIssue(invalidIssue);
+      const result = dataMapper.validateMCPIssue(invalidIssue);
       expect(result).toBe(false);
     });
   });
 
   describe('createBatchPayload', () => {
     it('should create a valid batch payload', () => {
-      const issues = [DataMapper.issueToMCPFormat(mockLinearIssue, '/test/repo')];
-      const result = DataMapper.createBatchPayload(issues, '/test/repo', 'project-123');
+      const issues = [dataMapper.issueToMCPFormat(mockLinearIssue, '/test/repo')];
+      const result = dataMapper.createBatchPayload(issues, '/test/repo', 'project-123');
 
       expect(result.projectId).toBe('project-123');
       expect(result.issues).toHaveLength(1);

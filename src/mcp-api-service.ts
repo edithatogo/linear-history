@@ -35,12 +35,14 @@ export interface SubmissionResult {
  */
 export class MCPApiService {
   private mcpClient: MCPClient;
+  private dataMapper: DataMapper;
   private retryConfig: RetryConfig;
   private rateLimitConfig: RateLimitConfig;
   private requestTimestamps: number[] = [];
 
   constructor(config: Config, mcpClient: MCPClient) {
     this.mcpClient = mcpClient;
+    this.dataMapper = new DataMapper();
     this.retryConfig = {
       maxRetries: config.maxRetries,
       baseDelay: 1000, // 1 second
@@ -205,20 +207,20 @@ export class MCPApiService {
     projectId?: string
   ): Promise<SubmissionResult> {
     // Map the issues to MCP format
-    const mcpIssues = DataMapper.toMCPFormat(linearIssues, repoPath);
-    
+    const mcpIssues = this.dataMapper.toMCPFormat(linearIssues, repoPath);
+
     // Create the batch payload
-    const payload = DataMapper.createBatchPayload(mcpIssues, repoPath, projectId);
-    
+    const payload = this.dataMapper.createBatchPayload(mcpIssues, repoPath, projectId);
+
     // Validate the payload
-    if (!DataMapper.validateBatchPayload(payload)) {
+    if (!this.dataMapper.validateBatchPayload(payload)) {
       return {
         success: false,
         error: 'Invalid payload format',
         attemptNumber: 1
       };
     }
-    
+
     // Submit with retry logic
     return await this.submitWithRetry(payload);
   }

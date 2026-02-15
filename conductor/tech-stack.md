@@ -2,13 +2,12 @@
 
 ## Languages
 - **TypeScript**: Primary language for type safety and modern JavaScript features
-- **JavaScript**: For compatibility with Node.js ecosystem and MCP server
+- **JavaScript**: For compatibility with Node.js ecosystem and MCP integration
 
 ## Frameworks & Libraries
-- **Node.js**: Runtime environment for MCP server integration
+- **Node.js**: Runtime environment for MCP integration
 - **Git CLI Integration**: Direct integration with Git for repository analysis
 - **Axios/Fetch**: HTTP client for MCP server communication
-- **Commander.js**: CLI framework for command-line interface
 - **fs-extra**: Enhanced file system operations
 - **yaml**: YAML parsing for configuration files
 - **zod**: Schema validation for configuration and API responses

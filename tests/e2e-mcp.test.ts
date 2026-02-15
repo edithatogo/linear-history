@@ -37,22 +37,25 @@ describe('End-to-End: MCP Server Integration', () => {
       expect(linearIssues).toBeDefined();
       expect(linearIssues.length).toBeGreaterThan(0);
 
+      // Create DataMapper instance
+      const dataMapper = new DataMapper();
+      
       // Map to MCP format
-      const mcpIssues = DataMapper.toMCPFormat(linearIssues, mockGitResult.repoPath);
+      const mcpIssues = dataMapper.toMCPFormat(linearIssues, mockGitResult.repoPath);
       
       // Verify mapping worked
       expect(mcpIssues).toBeDefined();
       expect(mcpIssues.length).toBeGreaterThan(0);
 
       // Create batch payload
-      const payload = DataMapper.createBatchPayload(mcpIssues, mockGitResult.repoPath);
+      const payload = dataMapper.createBatchPayload(mcpIssues, mockGitResult.repoPath);
       
       // Verify payload creation
       expect(payload).toBeDefined();
       expect(payload.issues.length).toBeGreaterThan(0);
 
       // Validate the payload
-      const isValid = DataMapper.validateBatchPayload(payload);
+      const isValid = dataMapper.validateBatchPayload(payload);
       expect(isValid).toBe(true);
     });
 
@@ -97,6 +100,7 @@ describe('End-to-End: MCP Server Integration', () => {
 
     it('should validate data at each transformation step', () => {
       // Test data validation at each step
+      const dataMapper = new DataMapper();
       const mockLinearIssue = {
         title: 'Test Issue',
         description: 'Test Description',
@@ -107,10 +111,10 @@ describe('End-to-End: MCP Server Integration', () => {
       };
 
       // Convert to MCP format
-      const mcpIssue = DataMapper.issueToMCPFormat(mockLinearIssue, './test-repo');
+      const mcpIssue = dataMapper.issueToMCPFormat(mockLinearIssue, './test-repo');
       
       // Validate the MCP issue
-      const isValid = DataMapper.validateMCPIssue(mcpIssue);
+      const isValid = dataMapper.validateMCPIssue(mcpIssue);
       expect(isValid).toBe(true);
 
       // Test with invalid data
@@ -119,7 +123,7 @@ describe('End-to-End: MCP Server Integration', () => {
         title: '' // Invalid: empty title
       };
       
-      const isInvalid = DataMapper.validateMCPIssue(invalidIssue as any);
+      const isInvalid = dataMapper.validateMCPIssue(invalidIssue as any);
       expect(isInvalid).toBe(false);
     });
   });

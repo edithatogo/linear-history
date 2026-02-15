@@ -42,8 +42,8 @@ export class DataMapper {
    * @param repoPath Path to the Git repository
    * @returns Array of MCP-compatible issue data
    */
-  public static toMCPFormat(
-    linearIssues: LinearIssue[], 
+  public toMCPFormat(
+    linearIssues: LinearIssue[],
     repoPath: string
   ): MCPIssueData[] {
     return linearIssues.map(issue => ({
@@ -70,7 +70,7 @@ export class DataMapper {
    * @param repoPath Path to the Git repository
    * @returns MCP batch payload
    */
-  public static createBatchPayload(
+  public createBatchPayload(
     issues: MCPIssueData[],
     repoPath: string,
     projectId?: string
@@ -93,7 +93,7 @@ export class DataMapper {
    * @param repoPath Path to the Git repository
    * @returns MCP-compatible issue data
    */
-  public static issueToMCPFormat(
+  public issueToMCPFormat(
     issue: LinearIssue,
     repoPath: string
   ): MCPIssueData {
@@ -119,7 +119,7 @@ export class DataMapper {
    * @param issue MCP issue data to validate
    * @returns True if valid, false otherwise
    */
-  public static validateMCPIssue(issue: MCPIssueData): boolean {
+  public validateMCPIssue(issue: MCPIssueData): boolean {
     // Check required fields
     if (!issue.title || typeof issue.title !== 'string') {
       return false;
@@ -149,7 +149,7 @@ export class DataMapper {
    * @param payload MCP batch payload to validate
    * @returns True if valid, false otherwise
    */
-  public static validateBatchPayload(payload: MCPBatchPayload): boolean {
+  public validateBatchPayload(payload: MCPBatchPayload): boolean {
     // Check required fields
     if (!Array.isArray(payload.issues) || payload.issues.length === 0) {
       return false;

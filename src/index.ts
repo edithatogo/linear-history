@@ -9,6 +9,9 @@ export { MCPClient, type MCPResponse } from './mcp-client';
 export { DataMapper, type MCPIssueData, type MCPBatchPayload } from './data-mapper';
 export { MCPApiService, type SubmissionResult } from './mcp-api-service';
 
+// Export the skill interface for use by other tools
+export { LinearHistorySkill } from './linear-history-skill';
+
 // If running directly, start the app
 if (require.main === module) {
   const app = new LinearHistoryApp();

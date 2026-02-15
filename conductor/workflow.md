@@ -21,8 +21,8 @@
 - **Review**: Automatically trigger conductor:review skill at phase end
 - **Progression**: Automatically move to Phase 2 after review
 
-#### Phase 2: MCP Server Integration
-- Implement communication with Linear's MCP server
+#### Phase 2: MCP Integration
+- Implement communication with Linear's official MCP server
 - Create data transformation layer
 - Handle authentication and authorization
 - **Review**: Automatically trigger conductor:review skill at phase end
