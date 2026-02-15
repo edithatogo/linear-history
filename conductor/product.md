@@ -25,3 +25,6 @@ A tool that maps local repository history to Linear via Linear's official MCP se
 - Flexible granularity options for mapping commits to Linear issues
 - Support for both simple and complex mapping scenarios
 - Traceability linking Git commits to Linear issues for audit purposes
+- Automated review process at the end of each development track
+- Automatic archiving of completed tracks
+- Seamless progression to the next track after review completion
