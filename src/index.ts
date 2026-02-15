@@ -5,6 +5,7 @@ export { LinearHistoryApp } from './app';
 export { ConfigManager } from './config';
 export { GitAnalyzer, type GitAnalysisResult, type CommitInfo, type GitReference } from './git-analyzer';
 export { DataTransformer, type LinearIssue } from './data-transformer';
+export { MCPClient, type MCPResponse } from './mcp-client';
 
 // If running directly, start the app
 if (require.main === module) {
