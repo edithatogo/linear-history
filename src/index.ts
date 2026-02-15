@@ -7,6 +7,7 @@ export { GitAnalyzer, type GitAnalysisResult, type CommitInfo, type GitReference
 export { DataTransformer, type LinearIssue } from './data-transformer';
 export { MCPClient, type MCPResponse } from './mcp-client';
 export { DataMapper, type MCPIssueData, type MCPBatchPayload } from './data-mapper';
+export { MCPApiService, type SubmissionResult } from './mcp-api-service';
 
 // If running directly, start the app
 if (require.main === module) {

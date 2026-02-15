@@ -7,6 +7,7 @@ import fs from 'fs-extra';
 export const ConfigSchema = z.object({
   repoPath: z.string().default('./'),
   maxCommits: z.number().positive().default(100000),
+  maxRetries: z.number().nonnegative().default(3),
   includeBranches: z.array(z.string()).optional(),
   excludeBranches: z.array(z.string()).optional(),
   startDate: z.string().datetime().optional(),
