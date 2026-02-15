@@ -20,10 +20,10 @@
 
 ## Phase 2: Data Serialization (Days 3-4)
 ### Tasks
-1. Design data structures for MCP compatibility
-2. Implement serialization functions
-3. Create mapping between Git data and MCP format
-4. Add validation for serialized data
+1. ~~Design data structures for MCP compatibility~~ [x] 7e5f8da
+2. ~~Implement serialization functions~~ [x] 7e5f8da
+3. ~~Create mapping between Git data and MCP format~~ [x] 7e5f8da
+4. ~~Add validation for serialized data~~ [x] 7e5f8da
 
 ### Acceptance Criteria
 - Data structures match MCP requirements
