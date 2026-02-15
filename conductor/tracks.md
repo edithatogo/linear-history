@@ -12,8 +12,8 @@ This file tracks all major work items. Each track has its own spec and plan.
 
 ## Active Tracks
 
-### 2. MCP Server Integration
-- **Status**: Planned
+### 2. [~] MCP Server Integration
+- **Status**: In Progress
 - **Priority**: High
 - **Description**: Implement communication with Linear's MCP server for data transmission
 - **Link**: [conductor/tracks/mcp-server-integration/spec.md](tracks/mcp-server-integration/spec.md)
