@@ -52,6 +52,12 @@
 - Architecture decision records (ADRs)
 - Troubleshooting guides
 
+### 7. Review Process
+- Automatically trigger conductor:review skill at the end of each track
+- Conduct comprehensive review of implemented functionality
+- Verify alignment with original specifications
+- Assess code quality and maintainability
+
 ## Git Workflow
 - Use feature branches for all development
 - Follow conventional commits specification
