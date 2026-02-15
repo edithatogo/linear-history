@@ -6,6 +6,7 @@ export { ConfigManager } from './config';
 export { GitAnalyzer, type GitAnalysisResult, type CommitInfo, type GitReference } from './git-analyzer';
 export { DataTransformer, type LinearIssue } from './data-transformer';
 export { MCPClient, type MCPResponse } from './mcp-client';
+export { DataMapper, type MCPIssueData, type MCPBatchPayload } from './data-mapper';
 
 // If running directly, start the app
 if (require.main === module) {
