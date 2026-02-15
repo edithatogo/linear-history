@@ -58,6 +58,11 @@
 - Verify alignment with original specifications
 - Assess code quality and maintainability
 
+### 8. Post-Review Actions
+- Automatically archive the completed track after review
+- Progress to the next track in the sequence
+- Update project status and metrics
+
 ## Git Workflow
 - Use feature branches for all development
 - Follow conventional commits specification
