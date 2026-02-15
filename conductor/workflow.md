@@ -18,21 +18,29 @@
 - Implement Git history parsing
 - Create basic commit data structures
 - Develop configuration management
+- **Review**: Automatically trigger conductor:review skill at phase end
+- **Progression**: Automatically move to Phase 2 after review
 
 #### Phase 2: MCP Server Integration
 - Implement communication with Linear's MCP server
 - Create data transformation layer
 - Handle authentication and authorization
+- **Review**: Automatically trigger conductor:review skill at phase end
+- **Progression**: Automatically move to Phase 3 after review
 
 #### Phase 3: Mapping Engine
 - Develop flexible mapping rules
 - Implement traceability features
 - Create audit trails between Git and Linear
+- **Review**: Automatically trigger conductor:review skill at phase end
+- **Progression**: Automatically move to Phase 4 after review
 
 #### Phase 4: Advanced Features
 - Implement configurable mapping depth
 - Add support for different repository structures
 - Enhance error handling and recovery
+- **Review**: Automatically trigger conductor:review skill at phase end
+- **Progression**: Automatically move to next track after review
 
 ### 4. Testing Strategy
 - Unit tests for individual components
